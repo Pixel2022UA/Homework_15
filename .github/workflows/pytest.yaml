@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - name: Install dependencies and run tests
+      - name: Install dependencies
         run: pip install -r requirements.txt
-          pytest
+      - name: Run pytest
+        run: pytest
+
