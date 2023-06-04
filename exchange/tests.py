@@ -9,7 +9,13 @@ from django.core.management import call_command
 from dotenv import load_dotenv
 from freezegun import freeze_time
 
-from .exchange_provider import MonoExchange, PrivatExchange, NacBankExchange, OpenExchange, LayerExchange
+from .exchange_provider import (
+    MonoExchange,
+    PrivatExchange,
+    NacBankExchange,
+    OpenExchange,
+    LayerExchange,
+)
 from .models import Rate
 from .views import index
 
@@ -19,6 +25,7 @@ load_dotenv()
 
 openexch_api = os.getenv("API_OpenExch")
 layer_api = os.getenv("API_ApiLayer")
+
 
 @pytest.fixture
 def mocked():
@@ -51,6 +58,7 @@ def test_privat_rate(mocked):
     e.get_rate()
     assert e.pair.sell == 37.45318
 
+
 @responses.activate
 def test_nacbank_rate(mocked):
     mocked_response = mocked("nacbank_response.json")
@@ -62,6 +70,7 @@ def test_nacbank_rate(mocked):
     e.get_rate()
     assert e.pair.sell == 36.5686
 
+
 @responses.activate
 def test_openexch_rate(mocked):
     mocked_response = mocked("openexch_response.json")
@@ -72,7 +81,6 @@ def test_openexch_rate(mocked):
     e = OpenExchange("openexch", "USD", "UAH")
     e.get_rate()
     assert e.pair.sell == 37.073792
-
 
 
 @pytest.mark.django_db
