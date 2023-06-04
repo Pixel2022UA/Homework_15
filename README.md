@@ -7,7 +7,7 @@
 
 3. __База данных залита на гит__, но так же можно создать новую:
    - python manage.py makemigrations
-   - python manage.py migrate
+   - python manage.py migrate.
 
 4. __Скопируйте прикрепленный в LMS Hillel файл .env в корневую директорию проекта (в директорию с фалом manage.py).
 
