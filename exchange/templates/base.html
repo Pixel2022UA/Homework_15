@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        index
+        {% endblock %}
+    </title>
+</head>
+<body style="background-color: #ededed;">
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
