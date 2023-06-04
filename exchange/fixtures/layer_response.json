@@ -1,0 +1,15 @@
+{
+  "date": "2023-06-04",
+  "historical": true,
+  "info": {
+    "rate": 37.073789,
+    "timestamp": 1685893442
+  },
+  "query": {
+    "amount": 1,
+    "from": "USD",
+    "to": "UAH"
+  },
+  "result": 37.073789,
+  "success": true
+}
