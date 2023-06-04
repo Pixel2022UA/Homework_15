@@ -1,6 +1,6 @@
 
 1. Скопируйте проект по ссылке:
-   - git@github.com:Pixel2022UA/Homework_10.git
+   - git@github.com:Pixel2022UA/Homework_15.git
 
 2. Откройте проект в PyCharm и установите необходимые зависимости из файла requirements.txt, используя команду 
    - pip install -r requirements.txt
