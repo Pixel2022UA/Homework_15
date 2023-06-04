@@ -72,8 +72,8 @@ def test_index_view():
                 "vendor": "mono",
                 "currency_a": "USD",
                 "currency_b": "EUR",
-                "sell": 1.1,
-                "buy": 1.2,
+                "sell": 1.3,
+                "buy": 1.4,
             },
             {
                 "id": 2,
@@ -81,8 +81,8 @@ def test_index_view():
                 "vendor": "privat",
                 "currency_a": "USD",
                 "currency_b": "EUR",
-                "sell": 1.01,
-                "buy": 1.2,
+                "sell": 1.3,
+                "buy": 1.4,
             },
         ]
     }
