@@ -66,6 +66,23 @@ def test_index_view():
     assert response.status_code == 200
     assert json.loads(response.content) == {
         "current_rates": [
-
+            {
+                "id": 1,
+                "date": "2023-06-04",
+                "vendor": "mono",
+                "currency_a": "USD",
+                "currency_b": "EUR",
+                "sell": 1.3,
+                "buy": 1.4,
+            },
+            {
+                "id": 2,
+                "date": "2023-06-04",
+                "vendor": "privat",
+                "currency_a": "USD",
+                "currency_b": "EUR",
+                "sell": 1.3,
+                "buy": 1.4,
+            },
         ]
     }
