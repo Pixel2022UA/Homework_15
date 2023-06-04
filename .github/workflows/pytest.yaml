@@ -6,7 +6,7 @@ jobs:
   pytest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: Install dependencies and run tests
         run: pip install -r requirements.txt
           pytest
