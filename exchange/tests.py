@@ -19,7 +19,6 @@ load_dotenv()
 
 openexch_api = os.getenv("API_OpenExch")
 layer_api = os.getenv("API_ApiLayer")
-headers = {"apikey": layer_api}
 
 @pytest.fixture
 def mocked():
