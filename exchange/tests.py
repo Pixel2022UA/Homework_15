@@ -83,11 +83,8 @@ def test_openexch_rate(mocked):
     assert e.pair.sell == 37.073792
 
 
-
-
-
 @pytest.fixture(scope="session")
-def django_db_setup(django_db_setup,
+def django_db_setup(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
         call_command("loaddata", "db_init.yaml")
 
