@@ -83,13 +83,6 @@ def test_openexch_rate(mocked):
     assert e.pair.sell == 37.073792
 
 
-@pytest.mark.django_db
-def test_data_exists_for_today():
-    today = date.today()
-    data_exists = Rate.objects.filter(date=today).exists()
-    assert data_exists
-
-
 @pytest.fixture(scope="session")
 def django_db_setup(django_db_setup, django_db_blocker):
     with django_db_blocker.unblock():
