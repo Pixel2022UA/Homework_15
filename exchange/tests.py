@@ -87,7 +87,7 @@ def test_openexch_rate(mocked):
 
 
 @pytest.fixture(scope="session")
-def django_db_setup(django_db_setup, django_db_blocker):
+def django_db_setup(django_db_setup, djang
     with django_db_blocker.unblock():
         call_command("loaddata", "db_init.yaml")
 
