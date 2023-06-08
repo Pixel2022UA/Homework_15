@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,15 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-m-^oo)j_gty5jqk=-dy1une8c7sp%mfg#w^98k%2(e7j6xcdk*"
 
+IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+if IS_HEROKU_APP:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     "exchange.apps.ExchangeConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -43,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -77,11 +85,9 @@ WSGI_APPLICATION = "exchange_rates.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
+
 
 
 # Password validation
@@ -117,8 +123,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "static/"
+
+STORAGES = {
+    # Enable WhiteNoise's GZip and Brotli compression of static assets:
+    # https://whitenoise.readthedocs.io/en/latest/django.html#add-compression-and-caching-support
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
