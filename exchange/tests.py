@@ -1,7 +1,6 @@
 import json
 import os
 import pathlib
-from datetime import date
 
 import pytest
 import responses
@@ -14,9 +13,8 @@ from .exchange_provider import (
     PrivatExchange,
     NacBankExchange,
     OpenExchange,
-    LayerExchange,
 )
-from .models import Rate
+
 from .views import index
 
 root = pathlib.Path(__file__).parent
